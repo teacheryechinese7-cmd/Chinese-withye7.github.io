@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese with ye laoshi - แหล่งเรียนรู้ภาษาจีนและติวสอบ A-Level / HSK</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Prompt & Ma Shan Zheng (Chinese Calligraphy) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'chinese-red': '#C8102E',
+                        'chinese-gold': '#D4AF37',
+                        'soft-rose': '#FFF5F5',
+                        'jade-light': '#E8F5E9',
+                        'jade-dark': '#2E7D32',
+                        'purple-accent': '#6B21A8',
+                        'purple-light': '#F3E8FF',
+                        'paper-bg': '#FAF8F5'
+                    },
+                    fontFamily: {
+                        'prompt': ['Prompt', 'sans-serif'],
+                        'calligraphy': ['Ma Shan Zheng', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #FAF8F5;
+        }
+        .chinese-pattern {
+            background-color: #FAF8F5;
+            background-image: radial-gradient(#E5E7EB 0.75px, transparent 0.75px);
+            background-size: 15px 15px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+<body class="chinese-pattern text-gray-800 min-h-screen flex flex-col antialiased">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-rose-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                <!-- Logo / Brand -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-purple-600 shadow-sm transition transform group-hover:scale-105">
+                        <img src="IMG_4994_1afb1d.jpeg" alt="Ye Laoshi Profile" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/100x100/6B21A8/FFFFFF?text=Ye+Laoshi'">
+                    </div>
+                    <div>
+                        <div class="font-bold text-lg sm:text-xl text-gray-900 tracking-tight flex items-center gap-2">
+                            <span>Chinese with ye laoshi</span>
+                            <span class="font-calligraphy text-red-600 text-lg hidden sm:inline">叶老师</span>
+                        </div>
+                        <p class="text-xs text-purple-700 font-medium hidden sm:block">คลังความรู้ภาษาจีนสำหรับนักเรียนสายศิลป์-จีน</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium">
+                    <a href="#alevel" class="px-3 py-2 rounded-lg text-gray-700 hover:text-purple-700 hover:bg-purple-50 transition">A-Level จีน</a>
+                    <a href="#hsk" class="px-3 py-2 rounded-lg text-gray-700 hover:text-purple-700 hover:bg-purple-50 transition">ติว HSK 1-4</a>
+                    <a href="#videos" class="px-3 py-2 rounded-lg text-gray-700 hover:text-purple-700 hover:bg-purple-50 transition">วิดีโอสอน</a>
+                    <a href="#tools" class="px-3 py-2 rounded-lg text-gray-700 hover:text-purple-700 hover:bg-purple-50 transition">เครื่องมือเรียนรู้</a>
+                    <button onclick="openAddModal()" class="ml-2 px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-full shadow-md hover:shadow-lg transition flex items-center gap-2 font-medium">
+                        <i class="fa-solid fa-plus text-xs"></i>
+                        <span>เพิ่มลิงก์ข้อมูล</span>
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <button onclick="openAddModal()" class="p-2 bg-purple-700 text-white rounded-lg shadow-sm text-sm">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 pt-2 pb-4 space-y-2">
+            <a href="#alevel" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-purple-50 hover:text-purple-700">A-Level จีน</a>
+            <a href="#hsk" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-purple-50 hover:text-purple-700">ติว HSK 1-4</a>
+            <a href="#videos" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-purple-50 hover:text-purple-700">วิดีโอสอน</a>
+            <a href="#tools" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-purple-50 hover:text-purple-700">เครื่องมือเรียนรู้</a>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="relative overflow-hidden pt-8 pb-12 sm:pt-16 sm:pb-20 bg-gradient-to-b from-purple-50 via-rose-50/50 to-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-5">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-800 text-xs sm:text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-purple-600 animate-pulse"></span>
+                        <span>ยินดีต้อนรับนักเรียนสายศิลป์-จีนทุกคน 🎓</span>
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+                        เรียนจีนให้มั่นใจ <br class="hidden sm:inline"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-700 via-rose-600 to-red-600">
+                            Chinese with Ye Laoshi
+                        </span>
+                        <span class="font-calligraphy text-red-600 text-4xl sm:text-6xl ml-2 font-normal">学中文</span>
+                    </h1>
+
+                    <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        ศูนย์รวบรวมเอกสารติวสอบ <strong class="text-purple-800">A-Level ภาษาจีน</strong>, แนวข้อสอบ <strong class="text-rose-700">HSK 1-4</strong>, คลิปวิดีโอสอนไวยากรณ์ และแหล่งเรียนรู้ครบวงจร ออกแบบมาเพื่อเหล่านักเรียนศิลป์จีนเตรียมพร้อมสู่มหาวิทยาลัยในฝัน!
+                    </p>
+
+                    <!-- Stats Badges -->
+                    <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-4 text-sm font-medium text-gray-700">
+                        <div class="bg-white/80 backdrop-blur border border-rose-100 px-4 py-2.5 rounded-2xl shadow-sm flex items-center gap-3">
+                            <div class="p-2 bg-red-100 text-red-600 rounded-lg"><i class="fa-solid fa-file-pdf"></i></div>
+                            <div class="text-left">
+                                <p class="text-xs text-gray-500">เอกสาร A-Level</p>
+                                <p class="font-bold text-gray-900">แจกฟรี PDF</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/80 backdrop-blur border border-rose-100 px-4 py-2.5 rounded-2xl shadow-sm flex items-center gap-3">
+                            <div class="p-2 bg-purple-100 text-purple-600 rounded-lg"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div class="text-left">
+                                <p class="text-xs text-gray-500">ติวเข้ม</p>
+                                <p class="font-bold text-gray-900">HSK ระดับ 1-4</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/80 backdrop-blur border border-rose-100 px-4 py-2.5 rounded-2xl shadow-sm flex items-center gap-3">
+                            <div class="p-2 bg-amber-100 text-amber-600 rounded-lg"><i class="fa-solid fa-play"></i></div>
+                            <div class="text-left">
+                                <p class="text-xs text-gray-500">คลังวิดีโอ</p>
+                                <p class="font-bold text-gray-900">คลิปสอนเข้าใจง่าย</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+                        <a href="#alevel" class="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-purple-700 to-rose-600 hover:from-purple-800 hover:to-rose-700 text-white font-medium rounded-xl shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 text-center">
+                            <i class="fa-solid fa-book-open mr-2"></i>เริ่มตะลุยข้อสอบ A-Level
+                        </a>
+                        <a href="#hsk" class="w-full sm:w-auto px-6 py-3.5 bg-white border border-gray-200 hover:border-purple-300 text-gray-700 hover:text-purple-700 font-medium rounded-xl shadow-sm transition text-center">
+                            <i class="fa-solid fa-layer-group mr-2"></i>คลังคำศัพท์ & HSK
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Profile Card (Ye Laoshi) -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <!-- Background Decorative elements -->
+                        <div class="absolute -top-4 -left-4 w-24 h-24 bg-rose-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+                        <div class="absolute -bottom-4 -right-4 w-28 h-28 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+                        
+                        <div class="glass-card rounded-3xl p-6 shadow-xl border border-white relative">
+                            <div class="relative rounded-2xl overflow-hidden mb-5 border-4 border-white shadow-md aspect-[3/4] bg-purple-50">
+                                <img src="IMG_4994_1afb1d.jpeg" alt="เย่เหล่าซือ - Ye Laoshi" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/400x500/6B21A8/FFFFFF?text=Ye+Laoshi'">
+                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 text-white">
+                                    <p class="font-bold text-lg">Ye Laoshi (叶老师)</p>
+                                    <p class="text-xs text-purple-200 font-light">ครูผู้สอนและผู้รวบรวมสื่อการเรียนรู้ภาษาจีน</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3 text-center">
+                                <p class="text-sm text-gray-600 italic">
+                                    "การเรียนภาษาจีนไม่ใช่เรื่องยาก หากเรามีเทคนิคและคลังคลังความรู้ที่ถูกต้อง เหล่าซือพร้อมช่วยให้ทุกคนพิชิตเป้าหมายครับ!"
+                                </p>
+                                <div class="pt-2 border-t border-gray-100 flex justify-center gap-3">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                        #ALevelจีน
+                                    </span>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800">
+                                        #HSK1to4
+                                    </span>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                                        #Dek68 #Dek69
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Search & Filter Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                
+                <!-- Search Input -->
+                <div class="md:col-span-6 relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" id="search-input" onkeyup="filterResources()" placeholder="ค้นหาเอกสาร, วิดีโอ, คำศัพท์, หรือหัวข้อ..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:bg-white transition">
+                </div>
+
+                <!-- Category Filter -->
+                <div class="md:col-span-3">
+                    <select id="category-filter" onchange="filterResources()" class="w-full py-3 px-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:bg-white transition text-gray-700">
+                        <option value="all">หมวดหมู่ทั้งหมด (All)</option>
+                        <option value="alevel">A-Level จีน</option>
+                        <option value="hsk1">HSK 1</option>
+                        <option value="hsk2">HSK 2</option>
+                        <option value="hsk3">HSK 3</option>
+                        <option value="hsk4">HSK 4</option>
+                        <option value="video">วิดีโอสอน (Videos)</option>
+                        <option value="tools">เครื่องมือ & พจนานุกรม</option>
+                    </select>
+                </div>
+
+                <!-- Content Type Filter Buttons -->
+                <div class="md:col-span-3 flex gap-2">
+                    <button onclick="setTypeFilter('all')" id="btn-type-all" class="flex-1 py-3 px-2 text-xs sm:text-sm font-medium rounded-xl bg-purple-700 text-white shadow-sm transition">
+                        ทั้งหมด
+                    </button>
+                    <button onclick="setTypeFilter('pdf')" id="btn-type-pdf" class="flex-1 py-3 px-2 text-xs sm:text-sm font-medium rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition">
+                        <i class="fa-solid fa-file-pdf text-red-500 mr-1"></i>PDF
+                    </button>
+                    <button onclick="setTypeFilter('link')" id="btn-type-link" class="flex-1 py-3 px-2 text-xs sm:text-sm font-medium rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition">
+                        <i class="fa-solid fa-link text-blue-500 mr-1"></i>ลิงก์
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <!-- SECTION 1: A-Level Chinese Exam Prep -->
+        <section id="alevel" class="scroll-mt-24 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-gray-200 pb-4 gap-2">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-100 px-3 py-1 rounded-full">
+                        Exam Prep
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 flex items-center gap-2">
+                        <span>คลังข้อสอบ & เอกสาร A-Level จีน</span>
+                        <span class="font-calligraphy text-red-600 text-2xl">高考</span>
+                    </h2>
+                </div>
+                <p class="text-sm text-gray-500">รวบรวมข้อสอบเก่า สรุปไวยากรณ์ และเก็งข้อสอบล่าสุด</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="alevel-grid">
+                <!-- Cards injected by JavaScript dynamically -->
+            </div>
+        </section>
+
+        <!-- SECTION 2: HSK 1-4 Tutoring & Prep -->
+        <section id="hsk" class="scroll-mt-24 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-gray-200 pb-4 gap-2">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-100 px-3 py-1 rounded-full">
+                        HSK Levels
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 flex items-center gap-2">
+                        <span>ศูนย์การเรียนรู้ HSK 1 - 4</span>
+                        <span class="font-calligraphy text-rose-600 text-2xl">汉语水平考试</span>
+                    </h2>
+                </div>
+                <!-- HSK Level Filter Tabs -->
+                <div class="flex flex-wrap gap-1 bg-gray-100 p-1 rounded-xl" id="hsk-tab-buttons">
+                    <button onclick="filterHskTab('all')" class="hsk-tab-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-white text-gray-900 shadow-sm" data-hsk="all">ทั้งหมด</button>
+                    <button onclick="filterHskTab('hsk1')" class="hsk-tab-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 hover:text-gray-900" data-hsk="hsk1">HSK 1</button>
+                    <button onclick="filterHskTab('hsk2')" class="hsk-tab-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 hover:text-gray-900" data-hsk="hsk2">HSK 2</button>
+                    <button onclick="filterHskTab('hsk3')" class="hsk-tab-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 hover:text-gray-900" data-hsk="hsk3">HSK 3</button>
+                    <button onclick="filterHskTab('hsk4')" class="hsk-tab-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 hover:text-gray-900" data-hsk="hsk4">HSK 4</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="hsk-grid">
+                <!-- Cards injected by JavaScript dynamically -->
+            </div>
+        </section>
+
+        <!-- SECTION 3: Video Lessons Hub -->
+        <section id="videos" class="scroll-mt-24 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-gray-200 pb-4 gap-2">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-3 py-1 rounded-full">
+                        Video Tutorials
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 flex items-center gap-2">
+                        <span>คลังวิดีโอติวและสอนไวยากรณ์</span>
+                        <span class="font-calligraphy text-amber-600 text-2xl">视频教程</span>
+                    </h2>
+                </div>
+                <p class="text-sm text-gray-500">คลิปสอนเน้นๆ เข้าใจง่ายจาก Ye Laoshi และช่องแนะนำ</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-grid">
+                <!-- Video Cards injected by JavaScript -->
+            </div>
+        </section>
+
+        <!-- SECTION 4: Tools & Apps for Chinese Major Students -->
+        <section id="tools" class="scroll-mt-24 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-gray-200 pb-4 gap-2">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">
+                        Student Toolbox
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 flex items-center gap-2">
+                        <span>แอปพลิเคชัน & เครื่องมือช่วยเรียนภาษาจีน</span>
+                        <span class="font-calligraphy text-emerald-600 text-2xl">学习工具</span>
+                    </h2>
+                </div>
+                <p class="text-sm text-gray-500">พจนานุกรม แฟลชการ์ด และเว็บฝึกฟังฝึกอ่าน</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="tools-grid">
+                <!-- Tool Cards injected by JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Add / Edit Resource Modal -->
+    <div id="resource-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden transition-opacity">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 sm:p-8 relative overflow-hidden max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <!-- Modal Close Button -->
+            <button onclick="closeAddModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 p-2 rounded-full hover:bg-gray-100 transition">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-xs font-bold text-purple-700 bg-purple-100 px-3 py-1 rounded-full">Ye Laoshi Admin / Contributor</span>
+                <h3 class="text-2xl font-bold text-gray-900 mt-2">เพิ่มสื่อการเรียนรู้ใหม่</h3>
+                <p class="text-xs text-gray-500 mt-1">แปะลิงค์วิดีโอ เอกสาร PDF หรือเครื่องมือเรียนรู้เพิ่มเติมได้ที่นี่</p>
+            </div>
+
+            <form id="add-resource-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-700 mb-1">ชื่อหัวข้อ / สื่อการเรียนรู้ *</label>
+                    <input type="text" id="input-title" required placeholder="เช่น สรุปไวยากรณ์ A-Level จีน บทที่ 1" class="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-purple-600 focus:bg-white focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-gray-700 mb-1">หมวดหมู่ *</label>
+                        <select id="input-category" required class="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-purple-600 focus:bg-white focus:outline-none">
+                            <option value="alevel">A-Level จีน</option>
+                            <option value="hsk1">HSK 1</option>
+                            <option value="hsk2">HSK 2</option>
+                            <option value="hsk3">HSK 3</option>
+                            <option value="hsk4">HSK 4</option>
+                            <option value="video">วิดีโอสอน</option>
+                            <option value="tools">เครื่องมือ / แอปเรียนจีน</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-700 mb-1">ประเภทสื่อ *</label>
+                        <select id="input-type" required class="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-purple-600 focus:bg-white focus:outline-none">
+                            <option value="pdf">เอกสาร PDF / ไฟล์ดาวน์โหลด</option>
+                            <option value="video">วิดีโอ (YouTube / Drive)</option>
+                            <option value="link">ลิงก์เว็บไซต์ / เครื่องมือ</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-gray-700 mb-1">ลิงก์ปลายทาง (URL) *</label>
+                    <input type="url" id="input-url" required placeholder="https://..." class="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-purple-600 focus:bg-white focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-gray-700 mb-1">คำอธิบายโดยย่อ</label>
+                    <textarea id="input-desc" rows="3" placeholder="ระบุเนื้อหาสำคัญ คำศัพท์ย่อ หรือเทคนิคการอ่าน..." class="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-purple-600 focus:bg-white focus:outline-none"></textarea>
+                </div>
+
+                <div class="pt-2 flex gap-3">
+                    <button type="button" onclick="closeAddModal()" class="w-1/2 py-3 bg-gray-100 text-gray-700 font-medium rounded-xl hover:bg-gray-200 transition text-sm">
+                        ยกเลิก
+                    </button>
+                    <button type="submit" class="w-1/2 py-3 bg-purple-700 text-white font-medium rounded-xl hover:bg-purple-800 transition shadow-md text-sm">
+                        บันทึกข้อมูล
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom Toast Message Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-gray-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition duration-300 z-50">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-green-400 text-lg"></i>
+        <span id="toast-message" class="text-sm font-medium">ทำรายการสำเร็จ</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <img src="IMG_4994_1afb1d.jpeg" alt="Ye Laoshi" class="w-10 h-10 rounded-full object-cover border border-purple-500" onerror="this.src='https://placehold.co/100x100/6B21A8/FFFFFF?text=Ye'">
+                    <div>
+                        <p class="font-bold text-gray-900">Chinese with ye laoshi</p>
+                        <p class="text-xs text-gray-500">รวบรวมสื่อการเรียนรู้ภาษาจีนเพื่อเยาวชนไทย</p>
+                    </div>
+                </div>
+
+                <div class="text-xs text-gray-500 text-center md:text-right space-y-1">
+                    <p>© 2026 Chinese with Ye Laoshi. All rights reserved.</p>
+                    <p class="text-purple-700 font-medium">สู้ๆ นะครับนักเรียนสายศิลป์จีนทุกคน! 加油！</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initial Resource Items Data
+        let resources = [
+            // A-Level Items
+            {
+                id: '1',
+                title: 'สรุปไวยากรณ์ A-Level จีน ออกบ่อยสุด 50 โครงสร้าง',
+                category: 'alevel',
+                type: 'pdf',
+                url: 'https://drive.google.com',
+                desc: 'รวมไวยากรณ์ต้องรู้ คำเชื่อม คำสันธาน และโครงสร้างประโยคซับซ้อนสำหรับข้อสอบ A-Level 61 จีน',
+                date: '2026-02-15'
+            },
+            {
+                id: '2',
+                title: 'คลังข้อสอบเก่า A-Level จีน ย้อนหลัง พร้อมเฉลยละเอียด',
+                category: 'alevel',
+                type: 'pdf',
+                url: 'https://drive.google.com',
+                desc: 'ชุดข้อสอบจำลองฝึกทำความเข้าใจพาร์ทการอ่าน (阅读) และวัฒนธรรมจีน (中国文化)',
+                date: '2026-01-10'
+            },
+            {
+                id: '3',
+                title: 'เทคนิคการทำข้อสอบสำนวนและสุภาษิตจีน (成语)',
+                category: 'alevel',
+                type: 'link',
+                url: 'https://youtube.com',
+                desc: 'รวบรวมเฉิงอวี่ที่มักเจอในข้อสอบ A-Level พร้อมคำแปลภาษาไทยและบริบทการใช้',
+                date: '2026-03-01'
+            },
+
+            // HSK Items
+            {
+                id: '4',
+                title: 'บัญชีคำศัพท์ HSK 1 พร้อม พินอิน & เสียงอ่าน',
+                category: 'hsk1',
+                type: 'pdf',
+                url: 'https://drive.google.com',
+                desc: 'คำศัพท์พื้นฐาน 150 คำสำหรับผู้เริ่มต้นเรียนภาษาจีน มีตัวอย่างประโยคง่ายๆ',
+                date: '2026-01-05'
+            },
+            {
+                id: '5',
+                title: 'คลิปติว HSK 2 ปูพื้นฐานคำศัพท์และการฟัง',
+                category: 'hsk2',
+                type: 'video',
+                url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                desc: 'คลิปติวคำศัพท์ 300 คำ พร้อมแบบฝึกหัดการฟังพาร์ทบทสนทนาสั้น',
+                date: '2026-02-01'
+            },
+            {
+                id: '6',
+                title: 'คู่มือเตรียมสอบ HSK 3: รวมคำศัพท์ 600 คำ & ไวยากรณ์',
+                category: 'hsk3',
+                type: 'pdf',
+                url: 'https://drive.google.com',
+                desc: 'สรุปสเปกข้อสอบ HSK 3 สำหรับเตรียมยื่นพอร์ตสายภาษาจีนเข้ามหาวิทยาลัย',
+                date: '2026-02-20'
+            },
+            {
+                id: '7',
+                title: 'ตะลุยโจทย์ HSK 4 พาร์ทการอ่านและการเขียนประโยค',
+                category: 'hsk4',
+                type: 'video',
+                url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                desc: 'เจาะลึกคำศัพท์ 1,200 คำ เทคนิคการเรียงประโยค (排列顺序) ให้ได้คะแนนเต็ม',
+                date: '2026-03-05'
+            },
+
+            // Videos
+            {
+                id: '8',
+                title: 'เทคนิคแยกความแตกต่าง 把 / 被 / 让 / 叫 ในภาษาจีน',
+                category: 'video',
+                type: 'video',
+                url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                desc: 'คลิปสอนยาว 25 นาที เข้าใจไวยากรณ์ที่สับสนที่สุดใน A-Level จีนแบบเก็ททันที',
+                date: '2026-02-18'
+            },
+            {
+                id: '9',
+                title: 'ปูพื้นฐานการออกเสียง Pinyin พยัญชนะ สระ วรรณยุกต์',
+                category: 'video',
+                type: 'video',
+                url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                desc: 'สอนออกเสียงภาษาจีนกลางอย่างถูกต้องสไตล์ Ye Laoshi สำหรับนักเรียนเริ่มต้น',
+                date: '2026-01-15'
+            },
+
+            // Tools & Apps
+            {
+                id: '10',
+                title: 'Pleco Chinese Dictionary',
+                category: 'tools',
+                type: 'link',
+                url: 'https://www.pleco.com/',
+                desc: 'แอปพจนานุกรมจีน-อังกฤษที่ดีที่สุด สามารถเขียนลายมือ ค้นหาด้วยพินอิน และดูสำนักขีดได้',
+                date: '2026-01-01'
+            },
+            {
+                id: '11',
+                title: 'Chinese Converter & Pinyin Tools',
+                category: 'tools',
+                type: 'link',
+                url: 'https://www.mgramm.com',
+                desc: 'เครื่องมือแปลงอักษรจีนตัวเต็ม-ตัวย่อ และเติม พินอิน (Pinyin) อัตโนมัติ',
+                date: '2026-01-02'
+            },
+            {
+                id: '12',
+                title: 'Anki Flashcards - ชุดศัพท์ HSK 1-4',
+                category: 'tools',
+                type: 'link',
+                url: 'https://apps.ankiweb.net/',
+                desc: 'ระบบแฟลชการ์ดจำระยะยาว (Spaced Repetition) ช่วยจำคำศัพท์จีนได้แม่นยำขึ้น 3 เท่า',
+                date: '2026-02-10'
+            }
+        ];
+
+        // Current Active Filters
+        let currentCategory = 'all';
+        let currentType = 'all';
+        let currentSearchQuery = '';
+        let currentHskTab = 'all';
+
+        // Initialize UI on DOM Loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAllSections();
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        // Filter Handlers
+        function filterResources() {
+            currentSearchQuery = document.getElementById('search-input').value.toLowerCase().trim();
+            currentCategory = document.getElementById('category-filter').value;
+            renderAllSections();
+        }
+
+        function setTypeFilter(type) {
+            currentType = type;
+            // Update button styles
+            ['all', 'pdf', 'link'].forEach(t => {
+                const btn = document.getElementById(`btn-type-${t}`);
+                if (t === type) {
+                    btn.className = 'flex-1 py-3 px-2 text-xs sm:text-sm font-medium rounded-xl bg-purple-700 text-white shadow-sm transition';
+                } else {
+                    btn.className = 'flex-1 py-3 px-2 text-xs sm:text-sm font-medium rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition';
+                }
+            });
+            renderAllSections();
+        }
+
+        function filterHskTab(hskLevel) {
+            currentHskTab = hskLevel;
+            // Update Tab active styling
+            document.querySelectorAll('#hsk-tab-buttons button').forEach(btn => {
+                if (btn.getAttribute('data-hsk') === hskLevel) {
+                    btn.className = 'hsk-tab-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-white text-gray-900 shadow-sm';
+                } else {
+                    btn.className = 'hsk-tab-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 hover:text-gray-900';
+                }
+            });
+            renderHskSection();
+        }
+
+        // Master Render Function
+        function renderAllSections() {
+            renderALevelSection();
+            renderHskSection();
+            renderVideoSection();
+            renderToolsSection();
+        }
+
+        // Helper Filter Logic
+        function passesFilter(item) {
+            // Category check
+            if (currentCategory !== 'all' && item.category !== currentCategory) {
+                return false;
+            }
+            // Type check
+            if (currentType !== 'all') {
+                if (currentType === 'pdf' && item.type !== 'pdf') return false;
+                if (currentType === 'link' && (item.type !== 'link' && item.type !== 'video')) return false;
+            }
+            // Search Query Check
+            if (currentSearchQuery) {
+                const titleMatch = item.title.toLowerCase().includes(currentSearchQuery);
+                const descMatch = item.desc.toLowerCase().includes(currentSearchQuery);
+                const categoryMatch = item.category.toLowerCase().includes(currentSearchQuery);
+                if (!titleMatch && !descMatch && !categoryMatch) return false;
+            }
+            return true;
+        }
+
+        // Card HTML Generator
+        function createCardHTML(item) {
+            let iconBadge = '<i class="fa-solid fa-file-pdf text-red-500"></i> PDF';
+            let badgeBg = 'bg-red-50 text-red-700 border-red-100';
+
+            if (item.type === 'video') {
+                iconBadge = '<i class="fa-solid fa-circle-play text-rose-500"></i> Video';
+                badgeBg = 'bg-rose-50 text-rose-700 border-rose-100';
+            } else if (item.type === 'link') {
+                iconBadge = '<i class="fa-solid fa-arrow-up-right-from-square text-blue-500"></i> Link';
+                badgeBg = 'bg-blue-50 text-blue-700 border-blue-100';
+            }
+
+            let catLabel = item.category.toUpperCase();
+            if (item.category === 'alevel') catLabel = 'A-Level จีน';
+            if (item.category === 'tools') catLabel = 'Tool / App';
+
+            return `
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-md border ${badgeBg}">
+                                ${iconBadge}
+                            </span>
+                            <span class="text-xs text-purple-700 bg-purple-50 px-2 py-0.5 rounded font-medium">
+                                ${catLabel}
+                            </span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 group-hover:text-purple-700 transition line-clamp-2 mb-2 text-base">
+                            ${escapeHtml(item.title)}
+                        </h3>
+                        <p class="text-xs text-gray-500 line-clamp-3 mb-4 leading-relaxed">
+                            ${escapeHtml(item.desc || 'ไม่มีคำอธิบายเพิ่มเติม')}
+                        </p>
+                    </div>
+
+                    <div class="pt-3 border-t border-gray-50 flex items-center justify-between">
+                        <span class="text-[11px] text-gray-400"><i class="fa-regular fa-calendar mr-1"></i>${item.date}</span>
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-purple-50 hover:bg-purple-700 hover:text-white text-purple-700 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
+                            <span>เปิดลิงก์</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Section Renderers
+        function renderALevelSection() {
+            const container = document.getElementById('alevel-grid');
+            const filtered = resources.filter(item => item.category === 'alevel' && passesFilter(item));
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-8 text-center text-gray-400 text-sm bg-white/50 rounded-2xl border border-dashed border-gray-200">ไม่พบเอกสาร A-Level ที่ตรงกับเงื่อนไขการค้นหา</div>`;
+                return;
+            }
+            container.innerHTML = filtered.map(item => createCardHTML(item)).join('');
+        }
+
+        function renderHskSection() {
+            const container = document.getElementById('hsk-grid');
+            const filtered = resources.filter(item => {
+                const isHsk = ['hsk1', 'hsk2', 'hsk3', 'hsk4'].includes(item.category);
+                if (!isHsk) return false;
+                if (currentHskTab !== 'all' && item.category !== currentHskTab) return false;
+                return passesFilter(item);
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-8 text-center text-gray-400 text-sm bg-white/50 rounded-2xl border border-dashed border-gray-200">ไม่พบข้อมูล HSK ในหมวดหมู่นี้</div>`;
+                return;
+            }
+            container.innerHTML = filtered.map(item => createCardHTML(item)).join('');
+        }
+
+        function renderVideoSection() {
+            const container = document.getElementById('video-grid');
+            const filtered = resources.filter(item => (item.category === 'video' || item.type === 'video') && passesFilter(item));
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-8 text-center text-gray-400 text-sm bg-white/50 rounded-2xl border border-dashed border-gray-200">ไม่พบวิดีโอสอนที่ตรงกับคำค้นหา</div>`;
+                return;
+            }
+            container.innerHTML = filtered.map(item => createCardHTML(item)).join('');
+        }
+
+        function renderToolsSection() {
+            const container = document.getElementById('tools-grid');
+            const filtered = resources.filter(item => item.category === 'tools' && passesFilter(item));
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-8 text-center text-gray-400 text-sm bg-white/50 rounded-2xl border border-dashed border-gray-200">ไม่พบเครื่องมือที่ค้นหา</div>`;
+                return;
+            }
+            container.innerHTML = filtered.map(item => createCardHTML(item)).join('');
+        }
+
+        // Modal Form Controllers
+        function openAddModal() {
+            document.getElementById('resource-modal').classList.remove('hidden');
+        }
+
+        function closeAddModal() {
+            document.getElementById('resource-modal').classList.add('hidden');
+            document.getElementById('add-resource-form').reset();
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('input-title').value.trim();
+            const category = document.getElementById('input-category').value;
+            const type = document.getElementById('input-type').value;
+            const url = document.getElementById('input-url').value.trim();
+            const desc = document.getElementById('input-desc').value.trim();
+
+            const newItem = {
+                id: Date.now().toString(),
+                title: title,
+                category: category,
+                type: type,
+                url: url,
+                desc: desc,
+                date: new Date().toISOString().split('T')[0]
+            };
+
+            resources.unshift(newItem);
+            renderAllSections();
+            closeAddModal();
+            showToast('เพิ่มสื่อการเรียนรู้ใหม่เรียบร้อยแล้ว!');
+        }
+
+        // Toast Helper
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Utility: Escape HTML to prevent XSS
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;")
+                      .replace(/</g, "&lt;")
+                      .replace(/>/g, "&gt;")
+                      .replace(/"/g, "&quot;")
+                      .replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
