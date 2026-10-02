@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese with ye laoshi - แหล่งรวมความรู้ภาษาจีน</title>
+    <!-- นำเข้าฟอนต์ภาษาไทยจาก Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- นำเข้าไอคอนจาก FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #E63946;
+            --primary-purple: #8338EC;
+            --primary-orange: #FB8500;
+            --gradient-bg: linear-gradient(135deg, var(--primary-red), var(--primary-purple), var(--primary-orange));
+            --text-dark: #333333;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* ส่วนหัวเว็บไซต์ */
+        .header {
+            background: var(--gradient-bg);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* คอนเทนเนอร์หลัก */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* หมวดหมู่ */
+        .category {
+            margin-bottom: 40px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .category-title {
+            color: var(--primary-purple);
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary-orange);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* กล่องลิงก์ */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-red);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        /* เปลี่ยนสีขอบซ้ายตามหมวดหมู่เพื่อความสวยงาม */
+        .cat-about .link-card { border-left-color: var(--primary-purple); }
+        .cat-study .link-card { border-left-color: var(--primary-red); }
+        .cat-social .link-card { border-left-color: var(--primary-orange); }
+
+        .link-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+            color: var(--primary-red);
+        }
+        
+        .cat-about .link-icon { color: var(--primary-purple); }
+        .cat-social .link-icon { color: var(--primary-orange); }
+
+        .link-text {
+            flex-grow: 1;
+        }
+
+        .link-arrow {
+            color: #ccc;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .link-card:hover .link-arrow {
+            color: var(--primary-red);
+        }
+
+        /* ส่วนท้ายเว็บไซต์ */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Chinese with ye laoshi</h1>
+        <p>แหล่งรวบรวมเอกสาร A-Level จีน, การติวสอบ HSK 1-4, วิดีโอสอนภาษาจีน และแหล่งเรียนรู้สำหรับนักเรียนสายศิลป์จีน โดย 小叶 (Ye Laoshi)</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Section 1: แนะนำตัวและผลงาน -->
+        <div class="category cat-about">
+            <h2 class="category-title"><i class="fa-solid fa-address-card"></i> ทำความรู้จัก Ye Laoshi</h2>
+            <div class="links-grid">
+                <a href="https://canva.link/myf0jcfwb7s9yjd" target="_blank" class="link-card">
+                    <i class="fa-solid fa-user link-icon"></i>
+                    <span class="link-text">แนะนำตัว (About Me)</span>
+                    <i class="fa-solid fa-chevron-right link-arrow"></i>
+                </a>
+                <a href="https://canva.link/d37lcamj41tmvps" target="_blank" class="link-card">
+                    <i class="fa-solid fa-folder-open link-icon"></i>
+                    <span class="link-text">แฟ้มสะสมผลงาน (Portfolio / Pa)</span>
+                    <i class="fa-solid fa-chevron-right link-arrow"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Section 2: เอกสารติวสอบและหนังสือ -->
+        <div class="category cat-study">
+            <h2 class="category-title"><i class="fa-solid fa-book-quran"></i> เอกสารติวสอบและ E-book</h2>
+            <div class="links-grid">
+                <a href="https://canva.link/hupw4dfi65gpp43" target="_blank" class="link-card">
+                    <i class="fa-solid fa-book link-icon"></i>
+                    <span class="link-text">ตำราพิชิต HSK 3.0</span>
+                    <i class="fa-solid fa-chevron-right link-arrow"></i>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1emaUQhblomPpdy67ST_E8L5R6z7YLmYS" target="_blank" class="link-card">
+                    <i class="fa-solid fa-file-lines link-icon"></i>
+                    <span class="link-text">ข้อสอบพร้อมเฉลย HSK 3.0</span>
+                    <i class="fa-solid fa-chevron-right link-arrow"></i>
+                </a>
+                <a href="https://www.mebmarket.com/index.php?action=BookDetails&book_id=286715" target="_blank" class="link-card">
+                    <i class="fa-solid fa-tablet-screen-button link-icon"></i>
+                    <span class="link-text">หนังสือ E-book สำหรับเรียนจีน</span>
+                    <i class="fa-solid fa-chevron-right link-arrow"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Section 3: ช่องทางการติดตาม -->
+        <div class="category cat-social">
+            <h2 class="category-title"><i class="fa-solid fa-share-nodes"></i> ช่องทางการติดตาม & วิดีโอสอน</h2>
+            <div class="links-grid">
+                <a href="https://youtube.com/@chinesewithye7?si=XCQ-NBZvSDqDIKRS" target="_blank" class="link-card">
+                    <i class="fa-brands fa-youtube link-icon"></i>
+                    <span class="link-text">YouTube Channel (วิดีโอสอน)</span>
+                    <i class="fa-solid fa-chevron-right link-arrow"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61552775123765" target="_blank" class="link-card">
+                    <i class="fa-brands fa-facebook link-icon"></i>
+                    <span class="link-text">Facebook Page</span>
+                    <i class="fa-solid fa-chevron-right link-arrow"></i>
+                </a>
+                <a href="https://www.tiktok.com/@yelingning?_r=1&_t=ZS-9ACfEGJKPjk" target="_blank" class="link-card">
+                    <i class="fa-brands fa-tiktok link-icon"></i>
+                    <span class="link-text">TikTok</span>
+                    <i class="fa-solid fa-chevron-right link-arrow"></i>
+                </a>
+                <a href="https://www.instagram.com/chinesewith.ye?stkn=Z2k5N290MG92a24%3D&utm_source=qr" target="_blank" class="link-card">
+                    <i class="fa-brands fa-instagram link-icon"></i>
+                    <span class="link-text">Instagram</span>
+                    <i class="fa-solid fa-chevron-right link-arrow"></i>
+                </a>
+                <a href="https://s.lemon8-app.com/s/GgMSydbFdh" target="_blank" class="link-card">
+                    <i class="fa-regular fa-lemon link-icon"></i>
+                    <span class="link-text">Lemon8</span>
+                    <i class="fa-solid fa-chevron-right link-arrow"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        &copy; 2026 Chinese with ye laoshi. All rights reserved.
+    </footer>
+
+</body>
+</html>
